@@ -1,18 +1,23 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+<?php
 
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+//This is my controller for the dating site
 
-    <title>Find a date!</title>
-</head>
-<body>
-<h1>Hello, world!</h1>
+//turn on error reporting
+ini_set('display_errors', 1);
+error_reporting(E_ALL);
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
-</body>
-</html>
+//Require autoload file
+require_once ('vendor/autoload.php');
+
+//Instantiate Fat-Free
+$f3 = Base::instance();
+
+//Define routes
+$f3->route('GET /', function(){
+    //Display the home page
+    $view = new Template();
+    echo $view->render('views/home.html');
+});
+
+//Run Fat-Free
+$f3->run();
