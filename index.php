@@ -1,3 +1,10 @@
+<!--
+   Ben Fuqua
+   4/24/21
+   index.php
+   Launch page for the dating site
+-->
+
 <?php
 
 //This is my controller for the dating site
