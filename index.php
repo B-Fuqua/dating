@@ -22,25 +22,25 @@ $f3->route('GET /', function(){
 });
 
 $f3->route('GET|POST /firstStep', function(){
-    //Display the home page
+    //Display the personal info page
     $view = new Template();
     echo $view->render('views/personalInfo.html');
 });
 
 $f3->route('GET|POST /nextStep', function(){
-    //Display the home page
+    //Display the profile page
     $view = new Template();
     echo $view->render('views/profile.html');
 });
 
 $f3->route('GET|POST /lastStep', function(){
-    //Display the home page
+    //Display the interests page
     $view = new Template();
     echo $view->render('views/interests.html');
 });
 
 $f3->route('GET /summary', function(){
-    //Display the home page
+    //Display the summary page
     $view = new Template();
     echo $view->render('views/summary.html');
 });
