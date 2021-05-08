@@ -6,12 +6,7 @@
 -->
 
 <?php
-
 //This is my controller for the dating site
-
-//turn on error reporting
-ini_set('display_errors', 1);
-error_reporting(E_ALL);
 
 //Require autoload file
 require_once ('vendor/autoload.php');
@@ -24,6 +19,30 @@ $f3->route('GET /', function(){
     //Display the home page
     $view = new Template();
     echo $view->render('views/home.html');
+});
+
+$f3->route('GET|POST /firstStep', function(){
+    //Display the home page
+    $view = new Template();
+    echo $view->render('views/personalInfo.html');
+});
+
+$f3->route('GET|POST /nextStep', function(){
+    //Display the home page
+    $view = new Template();
+    echo $view->render('views/profile.html');
+});
+
+$f3->route('GET|POST /lastStep', function(){
+    //Display the home page
+    $view = new Template();
+    echo $view->render('views/interests.html');
+});
+
+$f3->route('GET /summary', function(){
+    //Display the home page
+    $view = new Template();
+    echo $view->render('views/summary.html');
 });
 
 //Run Fat-Free
