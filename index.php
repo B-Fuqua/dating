@@ -21,19 +21,19 @@ $f3->route('GET /', function(){
     echo $view->render('views/home.html');
 });
 
-$f3->route('GET|POST /firstStep', function(){
+$f3->route('GET|POST /step1', function(){
     //Display the personal info page
     $view = new Template();
     echo $view->render('views/personalInfo.html');
 });
 
-$f3->route('GET|POST /nextStep', function(){
+$f3->route('GET|POST /step2', function(){
     //Display the profile page
     $view = new Template();
     echo $view->render('views/profile.html');
 });
 
-$f3->route('GET|POST /lastStep', function(){
+$f3->route('GET|POST /step3', function(){
     //Display the interests page
     $view = new Template();
     echo $view->render('views/interests.html');
