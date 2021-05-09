@@ -1,0 +1,40 @@
+<include href="views/header.html"/>
+<body>
+<div class="container" id="main">
+    <!-- Nav bar -->
+    <div class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <h5>My Dating Website</h5>
+            </div>
+            <a href="{{ @BASE }}">Home Page</a>
+        </div>
+    </div><hr>
+    <div class="row">
+        <div class="col-6">
+            <p>Name: {{ @SESSION.fName }} {{  @SESSION.lName }}</p>
+            <p>Gender: {{ @SESSION.gender }}</p>
+            <p>Age: {{ @SESSION.age }}</p>
+            <p>Phone: {{ @SESSION.number }}</p>
+            <p>Email: {{ @SESSION.email }}</p>
+            <p>State: {{ @SESSION.state }}</p>
+            <p>Seeking: {{ @SESSION.seeking }}</p>
+            <p>Interests: {{ @SESSION.interests }}</p>
+        </div>
+        <div class="col-6">
+            <label>Biography</label>
+            <p> {{ @SESSION.bio }}</p>
+        </div>
+    </div>
+    <div class="row pb-3">
+        <div class="col-5"></div>
+        <div class="col-2 align-content-center">
+            <button class="btn btn-danger">Contact me!</button>
+        </div>
+        <div class="col-5"></div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8" crossorigin="anonymous"></script>
+</body>
+</html>
