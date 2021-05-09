@@ -1,0 +1,120 @@
+<include href="views/header.html"/>
+<body>
+<div class="container" id="main">
+    <!-- Nav bar -->
+    <div class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <h5>My Dating Website</h5>
+            </div>
+            <a href="{{ @BASE }}">Home Page</a>
+        </div>
+    </div><hr>
+    <h1>Interests</h1>
+    <form action="#" method="post" class="body-flex">
+        <div class="row">
+            <label>Indoor interests</label>
+            <div class="col-3">
+                <div class="form-check">
+                    <label class="form-check-label">
+                        <input class="form-check-input" type="checkbox" value="TV" name="interests[]">TV
+                    </label>
+                </div>
+                <div class="form-check">
+                    <label class="form-check-label">
+                        <input class="form-check-input" type="checkbox" value="puzzles" name="interests[]">puzzles
+                    </label>
+                </div>
+            </div>
+            <div class="col-3">
+                <div class="form-check">
+                    <label class="form-check-label">
+                        <input class="form-check-input" type="checkbox" value="movies" name="interests[]">movies
+                    </label>
+                </div>
+                <div class="form-check">
+                    <label class="form-check-label">
+                        <input class="form-check-input" type="checkbox" value="reading" name="interests[]">reading
+                    </label>
+                </div>
+            </div>
+            <div class="col-3">
+                <div class="form-check">
+                    <label class="form-check-label">
+                        <input class="form-check-input" type="checkbox" value="cooking" name="interests[]">cooking
+                    </label>
+                </div>
+                <div class="form-check">
+                    <label class="form-check-label">
+                        <input class="form-check-input" type="checkbox" value="playing cards" name="interests[]">playing cards
+                    </label>
+                </div>
+            </div>
+            <div class="col-3">
+                <div class="form-check">
+                    <label class="form-check-label">
+                        <input class="form-check-input" type="checkbox" value="board games" name="interests[]">board games
+                    </label>
+                </div>
+                <div class="form-check">
+                    <label class="form-check-label">
+                        <input class="form-check-input" type="checkbox" value="video games" name="interests[]">video games
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <label>Outdoor interests</label>
+            <div class="col-3">
+                <div class="form-check">
+                    <label class="form-check-label">
+                        <input class="form-check-input" type="checkbox" value="hiking" name="interests[]">hiking
+                    </label>
+                </div>
+                <div class="form-check">
+                    <label class="form-check-label">
+                        <input class="form-check-input" type="checkbox" value="walking" name="interests[]">walking
+                    </label>
+                </div>
+            </div>
+            <div class="col-3">
+                <div class="col-3">
+                    <div class="form-check">
+                        <label class="form-check-label">
+                            <input class="form-check-input" type="checkbox" value="biking" name="interests[]">biking
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <label class="form-check-label">
+                            <input class="form-check-input" type="checkbox" value="climbing" name="interests[]">climbing
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="col-3">
+                <div class="form-check">
+                    <label class="form-check-label">
+                        <input class="form-check-input" type="checkbox" value="swimming" name="interests[]">swimming
+                    </label>
+                </div>
+            </div>
+            <div class="col-3">
+                <div class="form-check">
+                    <label class="form-check-label">
+                        <input class="form-check-input" type="checkbox" value="collecting" name="interests[]">collecting
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-8"></div>
+            <div class="col-4">
+                <button class="btn btn-danger float-end" type="submit">Next</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8" crossorigin="anonymous"></script>
+</body>
+</html>

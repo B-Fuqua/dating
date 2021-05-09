@@ -34,12 +34,25 @@ $f3->route('GET|POST /step1', function(){
 });
 
 $f3->route('GET|POST /step2', function(){
+    if ($_SERVER['REQUEST_METHOD'] == 'POST'){
+        $_SESSION['email'] = $_POST['email'];
+        $_SESSION['state'] = $_POST['state'];
+        $_SESSION['seeking'] = $_POST['seeking'];
+        $_SESSION['bio'] = $_POST['bio'];
+        header('location: step3');
+    }
+
     //Display the profile page
     $view = new Template();
     echo $view->render('views/profile.html');
 });
 
 $f3->route('GET|POST /step3', function(){
+    if ($_SERVER['REQUEST_METHOD'] == 'POST'){
+        $_SESSION['interests'] = implode(", ", $_POST['interests']);
+        header('location: summary');
+    }
+
     //Display the interests page
     $view = new Template();
     echo $view->render('views/interests.html');
