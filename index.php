@@ -49,11 +49,16 @@ $f3->route('GET|POST /step2', function(){
     echo $view->render('views/profile.html');
 });
 
-$f3->route('GET|POST /step3', function(){
+$f3->route('GET|POST /step3', function($f3){
     if ($_SERVER['REQUEST_METHOD'] == 'POST'){
         $_SESSION['interests'] = implode(", ", $_POST['interests']);
         header('location: summary');
     }
+
+    //Get the indoor and outdoor activities and send them to the view
+    $f3->set('indoor', getIndoors());
+    $f3->set('outdoor', getOutdoors());
+
 
     //Display the interests page
     $view = new Template();

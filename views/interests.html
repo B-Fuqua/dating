@@ -18,99 +18,25 @@
     </div><hr>
     <h1>Interests</h1>
     <form action="#" method="post" class="body-flex">
-        <div class="row">
-            <label>Indoor interests</label>
-            <div class="col-3">
-                <div class="form-check">
+        <label>Indoor interests</label>
+        <div class="d-flex align-content-start flex-wrap">
+            <repeat group="{{ @indoor }}" value="{{ @activity1 }}">
+                <div class="form-check px-4 py-1">
                     <label class="form-check-label">
-                        <input class="form-check-input" type="checkbox" value="TV" name="interests[]">TV
+                        <input class="form-check-input" type="checkbox" value="{{ @activity1 }}" name="indoorInterests[]">{{ @activity1 }}
                     </label>
                 </div>
-                <div class="form-check">
-                    <label class="form-check-label">
-                        <input class="form-check-input" type="checkbox" value="puzzles" name="interests[]">puzzles
-                    </label>
-                </div>
-            </div>
-            <div class="col-3">
-                <div class="form-check">
-                    <label class="form-check-label">
-                        <input class="form-check-input" type="checkbox" value="movies" name="interests[]">movies
-                    </label>
-                </div>
-                <div class="form-check">
-                    <label class="form-check-label">
-                        <input class="form-check-input" type="checkbox" value="reading" name="interests[]">reading
-                    </label>
-                </div>
-            </div>
-            <div class="col-3">
-                <div class="form-check">
-                    <label class="form-check-label">
-                        <input class="form-check-input" type="checkbox" value="cooking" name="interests[]">cooking
-                    </label>
-                </div>
-                <div class="form-check">
-                    <label class="form-check-label">
-                        <input class="form-check-input" type="checkbox" value="playing cards" name="interests[]">playing cards
-                    </label>
-                </div>
-            </div>
-            <div class="col-3">
-                <div class="form-check">
-                    <label class="form-check-label">
-                        <input class="form-check-input" type="checkbox" value="board games" name="interests[]">board games
-                    </label>
-                </div>
-                <div class="form-check">
-                    <label class="form-check-label">
-                        <input class="form-check-input" type="checkbox" value="video games" name="interests[]">video games
-                    </label>
-                </div>
-            </div>
+            </repeat>
         </div>
-        <div class="row">
-            <label>Outdoor interests</label>
-            <div class="col-3">
-                <div class="form-check">
+        <label>Outdoor interests</label>
+        <div class="d-flex align-content-start flex-wrap">
+            <repeat group="{{ @outdoor }}" value="{{ @activity2 }}">
+                <div class="form-check px-4 py-1">
                     <label class="form-check-label">
-                        <input class="form-check-input" type="checkbox" value="hiking" name="interests[]">hiking
+                        <input class="form-check-input" type="checkbox" value="{{ @activity2 }}" name="outdooInterests[]">{{ @activity2 }}
                     </label>
                 </div>
-                <div class="form-check">
-                    <label class="form-check-label">
-                        <input class="form-check-input" type="checkbox" value="walking" name="interests[]">walking
-                    </label>
-                </div>
-            </div>
-            <div class="col-3">
-                <div class="col-3">
-                    <div class="form-check">
-                        <label class="form-check-label">
-                            <input class="form-check-input" type="checkbox" value="biking" name="interests[]">biking
-                        </label>
-                    </div>
-                    <div class="form-check">
-                        <label class="form-check-label">
-                            <input class="form-check-input" type="checkbox" value="climbing" name="interests[]">climbing
-                        </label>
-                    </div>
-                </div>
-            </div>
-            <div class="col-3">
-                <div class="form-check">
-                    <label class="form-check-label">
-                        <input class="form-check-input" type="checkbox" value="swimming" name="interests[]">swimming
-                    </label>
-                </div>
-            </div>
-            <div class="col-3">
-                <div class="form-check">
-                    <label class="form-check-label">
-                        <input class="form-check-input" type="checkbox" value="collecting" name="interests[]">collecting
-                    </label>
-                </div>
-            </div>
+            </repeat>
         </div>
         <div class="row pb-3">
             <div class="col-8"></div>

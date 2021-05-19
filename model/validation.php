@@ -1,31 +1,31 @@
 <?php
 
-function validName()
+function validName($name)
 {
 
 }
 
-function validAge()
+function validAge($age)
 {
 
 }
 
-function validPhone()
+function validPhone($phone)
 {
 
 }
 
-function validEmail()
+function validEmail($email)
 {
 
 }
 
-function validOutdoor()
+function validOutdoor($outdoor)
 {
 
 }
 
-function validIndoor()
+function validIndoor($indoor)
 {
 
 }
