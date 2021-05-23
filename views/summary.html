@@ -25,19 +25,18 @@
             <p>Email: {{ @SESSION.email }}</p>
             <p>State: {{ @SESSION.state }}</p>
             <p>Seeking: {{ @SESSION.seeking }}</p>
-            <p>Interests: {{ @SESSION.interests }}</p>
+            <p>Interests: {{ @SESSION.indoor }}, {{ @SESSION.outdoor }}</p>
         </div>
-        <div class="col-6">
-            <label>Biography</label>
+        <div class="col-6 text-center">
+            <img class="w-50" src="images/Placeholder.png" alt="Placeholder image"><br>
+            <h5>Biography</h5>
             <p> {{ @SESSION.bio }}</p>
         </div>
     </div>
     <div class="row pb-3">
-        <div class="col-5"></div>
-        <div class="col-2 align-content-center">
-            <button class="btn btn-danger">Contact me!</button>
+        <div class="col-12 text-center">
+            <button class=" btn btn-danger">Contact me!</button>
         </div>
-        <div class="col-5"></div>
     </div>
 </div>
 

@@ -3,7 +3,6 @@
     interest.html
     Collects interests info on the dating site
 -->
-
 <include href="views/header.html"/>
 <body>
 <div class="container mb-3" id="main">
@@ -23,20 +22,34 @@
             <repeat group="{{ @indoor }}" value="{{ @activity1 }}">
                 <div class="form-check px-4 py-1">
                     <label class="form-check-label">
-                        <input class="form-check-input" type="checkbox" value="{{ @activity1 }}" name="indoorInterests[]">{{ @activity1 }}
+                        <input class="form-check-input" type="checkbox" value="{{ @activity1 }}" name="indoorInterests[]"
+                        <check if="{{ in_array(@activity1, @userIndoor) }}">
+                            checked = "checked"
+                        </check>
+                        >{{ @activity1 }}
                     </label>
                 </div>
             </repeat>
+            <check if="{{ isset(@errors['indoor']) }}">
+                <span class="err">{{ @errors['indoor'] }}</span>
+            </check>
         </div>
         <label>Outdoor interests</label>
         <div class="d-flex align-content-start flex-wrap">
             <repeat group="{{ @outdoor }}" value="{{ @activity2 }}">
                 <div class="form-check px-4 py-1">
                     <label class="form-check-label">
-                        <input class="form-check-input" type="checkbox" value="{{ @activity2 }}" name="outdooInterests[]">{{ @activity2 }}
+                        <input class="form-check-input" type="checkbox" value="{{ @activity2 }}" name="outdoorInterests[]"
+                        <check if="{{ in_array(@activity2, @userOutdoor) }}">
+                            checked = "checked"
+                        </check>
+                        >{{ @activity2 }}
                     </label>
                 </div>
             </repeat>
+            <check if="{{ isset(@errors['outdoor']) }}">
+                <span class="err">{{ @errors['outdoor'] }}</span>
+            </check>
         </div>
         <div class="row pb-3">
             <div class="col-8"></div>
