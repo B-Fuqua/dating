@@ -1,7 +1,10 @@
 <?php
 
-
-class PremiumMember extends member
+/**
+ * Class PremiumMember
+ * Represents a premium member of the dating site
+ */
+class PremiumMember extends Member
 {
     private $_inDoorInterests;
     private $_outDoorInterests;
@@ -20,8 +23,8 @@ class PremiumMember extends member
      * @param array $_inDoorInterests indoor interests
      * @param array $_outDoorInterests outdoor interests
      */
-    public function __construct($fname, $lname, $age, $gender, $phone,
-                                $email, $state, $seeking, $bio,
+    public function __construct($fname="", $lname="", $age=0, $gender="", $phone="",
+                                $email="", $state="", $seeking="", $bio="",
                                 $_inDoorInterests=array(), $_outDoorInterests=array())
     {
         parent::__construct($fname, $lname, $age, $gender,
@@ -31,7 +34,7 @@ class PremiumMember extends member
     }
 
     /**
-     * @return array
+     * @return array User's indoor interests
      */
     public function getInDoorInterests(): array
     {
@@ -39,7 +42,7 @@ class PremiumMember extends member
     }
 
     /**
-     * @param array $inDoorInterests
+     * @param array $inDoorInterests User's indoor interests
      */
     public function setInDoorInterests(array $inDoorInterests): void
     {
@@ -47,7 +50,7 @@ class PremiumMember extends member
     }
 
     /**
-     * @return array
+     * @return array User's outdoor interests
      */
     public function getOutDoorInterests(): array
     {
@@ -55,7 +58,7 @@ class PremiumMember extends member
     }
 
     /**
-     * @param array $outDoorInterests
+     * @param array $outDoorInterests User's outdoor interests
      */
     public function setOutDoorInterests(array $outDoorInterests): void
     {
