@@ -55,6 +55,9 @@
                             >Female
                         </label>
                     </div>
+                    <check if="{{ isset(@errors['seeking']) }}">
+                        <span class="err">{{ @errors['seeking'] }}</span>
+                    </check>
                 </div>
             </div>
             <div class="col-6 d-flex align-items-end flex-column">
