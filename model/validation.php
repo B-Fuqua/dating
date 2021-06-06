@@ -1,13 +1,24 @@
 <?php
 
+/**
+ * Class Validation
+ */
 class Validation
 {
+    /**
+     * @param $name
+     * @return bool
+     */
     static function validName($name): bool
     {
         $pattern = "/^[a-z]+$/i";
         return preg_match($pattern, $name) == 1;
     }
 
+    /**
+     * @param $age
+     * @return bool
+     */
     static function validAge($age): bool
     {
         $age = floatval($age);
@@ -17,17 +28,29 @@ class Validation
         return false;
     }
 
+    /**
+     * @param $phone
+     * @return bool
+     */
     static function validPhone($phone): bool
     {
         $pattern = '/^\s*(?:\+?(\d{1,3}))?([-. (]*(\d{3})[-. )]*)?((\d{3})[-. ]*(\d{2,4})(?:[-.x ]*(\d+))?)\s*$/';
         return preg_match($pattern, $phone) == 1;
     }
 
+    /**
+     * @param $email
+     * @return bool
+     */
     static function validEmail($email): bool
     {
         return filter_var($email, FILTER_VALIDATE_EMAIL);
     }
 
+    /**
+     * @param $outdoor
+     * @return bool
+     */
     static function validOutdoor($outdoor): bool
     {
         $validOutdoor = DataLayer::getOutdoors();
@@ -41,6 +64,10 @@ class Validation
         return true;
     }
 
+    /**
+     * @param $indoor
+     * @return bool
+     */
     static function validIndoor($indoor): bool
     {
         $validIndoor = DataLayer::getIndoors();

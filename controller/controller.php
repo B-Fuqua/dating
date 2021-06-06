@@ -1,20 +1,33 @@
 <?php
 
+/**
+ * Class Controller
+ */
 class Controller
 {
     private $_f3;
 
+    /**
+     * Controller constructor.
+     * @param $f3
+     */
     function __construct($f3)
     {
         $this->_f3 = $f3;
     }
 
+    /**
+     * Display the home page
+     */
     function home()
     {
         $view = new Template();
         echo $view->render('views/home.html');
     }
 
+    /**
+     * Display the personal Info page
+     */
     function personalInfo()
     {
         //If the form has been submitted, add the data to the session
@@ -36,24 +49,58 @@ class Controller
             $userGender = $_POST['gender'];
             $userPremium = isset($_POST['premium']);
 
-            if (!Validation::validName($userFirst))
+            if ($userPremium)
+            {
+                $_SESSION['user'] = new PremiumMember();
+            }
+            else
+            {
+                $_SESSION['user'] = new Member();
+            }
+
+            if (Validation::validName($userFirst))
+            {
+                $_SESSION['user']->setFname($userFirst);
+            }
+            else
             {
                 $this->_f3->set('errors["fname"]', "Please input a valid first name");
             }
 
-            if (!Validation::validName($userLast))
+            if (Validation::validName($userLast))
+            {
+                $_SESSION['user']->setLname($userLast);
+            }
+            else
             {
                 $this->_f3->set('errors["lname"]', "Please input a valid last name");
             }
 
-            if (!Validation::validAge($userAge))
+            if (Validation::validAge($userAge))
+            {
+                $_SESSION['user']->setAge($userAge);
+            }
+            else
             {
                 $this->_f3->set('errors["age"]', "Please enter a valid age");
             }
 
-            if (!Validation::validPhone($userPhone))
+            if (Validation::validPhone($userPhone))
+            {
+                $_SESSION['user']->setPhone($userPhone);
+            }
+            else
             {
                 $this->_f3->set('errors["number"]', "Please enter a valid phone number");
+            }
+
+            if (!is_null($userGender))
+            {
+                $_SESSION['user']->setGender($userGender);
+            }
+            else
+            {
+                $this->_f3->set('errors["gender"]', "Please select the gender you identify as");
             }
 
             $this->_f3->set('userFirst', $userFirst);
@@ -61,7 +108,7 @@ class Controller
             $this->_f3->set('userAge', $userAge);
             $this->_f3->set('userPhone', $userPhone);
             $this->_f3->set('userGender', $userGender);
-            $this->_f3->set('userPremium', $userPremium);
+
 
             if (empty($this->_f3->get('errors')))
             {
@@ -73,6 +120,9 @@ class Controller
         echo $view->render('views/personalInfo.html');
     }
 
+    /**
+     * Display the profile page
+     */
     function profile()
     {
         if ($_SERVER['REQUEST_METHOD'] == 'POST'){
@@ -88,16 +138,25 @@ class Controller
 
             if (Validation::validEmail($userEmail))
             {
-                $_SESSION['email'] = $userEmail;
+                $_SESSION['user']->setEmail($userEmail);
             }
             else
             {
                 $this->_f3->set('errors["email"]', "Please enter a valid email address");
             }
 
-            $_SESSION['state'] = $userState;
-            $_SESSION['seeking'] = $userSeeking;
-            $_SESSION['bio'] = $userBio;
+            if (!is_null($userSeeking))
+            {
+                $_SESSION['user']->setSeeking($userSeeking);
+            }
+            else
+            {
+                $this->_f3->set('errors["seeking"]', "Please enter the gender you seek in a partner");
+            }
+
+            $_SESSION['user']->setState($userState);
+
+            $_SESSION['user']->setBio($userBio);
 
             $this->_f3->set('userEmail', $userEmail);
             $this->_f3->set('userState', $userState);
@@ -115,49 +174,62 @@ class Controller
         echo $view->render('views/profile.html');
     }
 
+    /**
+     * Display the interests page (If the user is a premium member)
+     */
     function interests()
     {
-        $userIndoor = array();
-        $userOutdoor = array();
-        if ($_SERVER['REQUEST_METHOD'] == 'POST'){
-            $userIndoor = $_POST['indoorInterests'];
-            $userOutdoor = $_POST['outdoorInterests'];
+        if ($_SESSION['user'] instanceof PremiumMember)
+        {
+            $userIndoor = array();
+            $userOutdoor = array();
+            if ($_SERVER['REQUEST_METHOD'] == 'POST'){
+                $userIndoor = $_POST['indoorInterests'] == null ? array() : $_POST['indoorInterests'];
+                $userOutdoor = $_POST['outdoorInterests'] == null ? array() : $_POST['outdoorInterests'];
 
-            if (Validation::validIndoor($userIndoor))
-            {
-                $_SESSION['indoor'] = implode(", ", $userIndoor);
-            }
-            else
-            {
-                $this->_f3->set('errors["indoor"]', "Begone evildoer!");
+                if (Validation::validIndoor($userIndoor))
+                {
+                    $_SESSION['user']->setInDoorInterests($userIndoor);
+                }
+                else
+                {
+                    $this->_f3->set('errors["indoor"]', "Begone evildoer!");
+                }
+
+                if (Validation::validOutdoor($userOutdoor))
+                {
+                    $_SESSION['user']->setOutDoorInterests($userOutdoor);
+                }
+                else
+                {
+                    $this->_f3->set('errors["outdoor"]', "Begone evildoer!");
+                }
+                if (empty($this->_f3->get('errors')))
+                {
+                    header('location: summary');
+                }
             }
 
-            if (Validation::validOutdoor($userOutdoor))
-            {
-                $_SESSION['outdoor'] = implode(", ", $userOutdoor);
-            }
-            else
-            {
-                $this->_f3->set('errors["outdoor"]', "Begone evildoer!");
-            }
-            if (empty($this->_f3->get('errors')))
-            {
-                header('location: summary');
-            }
+            //Get the indoor and outdoor activities and send them to the view
+            $this->_f3->set('indoor', DataLayer::getIndoors());
+            $this->_f3->set('outdoor', DataLayer::getOutdoors());
+
+            $this->_f3->set('userIndoor', $userIndoor);
+            $this->_f3->set('userOutdoor', $userOutdoor);
+
+            //Display the interests page
+            $view = new Template();
+            echo $view->render('views/interests.html');
         }
-
-        //Get the indoor and outdoor activities and send them to the view
-        $this->_f3->set('indoor', getIndoors());
-        $this->_f3->set('outdoor', getOutdoors());
-
-        $this->_f3->set('userIndoor', $userIndoor);
-        $this->_f3->set('userOutdoor', $userOutdoor);
-
-        //Display the interests page
-        $view = new Template();
-        echo $view->render('views/interests.html');
+        else
+        {
+            header('location: summary');
+        }
     }
 
+    /**
+     * Display the summary page
+     */
     function summary()
     {
         //Display the summary page

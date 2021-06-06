@@ -1,5 +1,8 @@
 <?php
 
+/**
+ * Class DataLayer
+ */
 class DataLayer
 {
     static function getIndoors(): array
